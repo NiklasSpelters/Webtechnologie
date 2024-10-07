@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Einführung in GIT</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 20px;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 10px;
+            background-color: #f9f9f9;
+        }
+        h1, h2, h3 {
+            color: #333;
+        }
+        code {
+            background-color: #e8e8e8;
+            padding: 2px 4px;
+            border-radius: 4px;
+        }
+        pre {
+            background-color: #e8e8e8;
+            padding: 10px;
+            border-radius: 4px;
+            overflow: auto;
+        }
+    </style>
+</head>
+<body>
+
+<h1>GIT – Einführungsonepager</h1>
+
+<h2>Was ist GIT?</h2>
+<p>GIT ist ein verteiltes Versionskontrollsystem, das es Entwicklern ermöglicht, Änderungen an Dateien und Projekten zu verfolgen und zu verwalten. Es wurde von Linus Torvalds entwickelt und ist besonders beliebt in der Softwareentwicklung, da es mehrere Programmierer unterstützt, die gleichzeitig an einem Projekt arbeiten können.</p>
+
+<h2>Wozu dient GIT?</h2>
+<ul>
+    <li><strong>Versionskontrolle:</strong> Verfolgt alle Änderungen an Dateien, sodass frühere Versionen wiederhergestellt werden können.</li>
+    <li><strong>Zusammenarbeit:</strong> Erlaubt mehreren Entwicklern, an einem Projekt zu arbeiten, ohne dass Konflikte auftreten.</li>
+    <li><strong>Branching:</strong> Unterstützt das Arbeiten an verschiedenen Funktionen oder Fehlerbehebungen in separaten "Branches".</li>
+</ul>
+
+<h2>Anleitung zur Nutzung von GIT</h2>
+
+<h3>1. Nutzung via Kommandozeile</h3>
+<ol>
+    <li><strong>GIT installieren:</strong> 
+        <ul>
+            <li>Auf Windows: GIT für Windows herunterladen und installieren.</li>
+            <li>Auf macOS: <code>brew install git</code> (Homebrew muss installiert sein).</li>
+            <li>Auf Linux: <code>sudo apt-get install git</code> (Debian/Ubuntu).</li>
+        </ul>
+    </li>
+    <li><strong>GIT konfigurieren:</strong>
+    <pre><code>git config --global user.name "Dein Name"
+git config --global user.email "deine.email@example.com"</code></pre>
+    </li>
+    <li><strong>Ein neues Repository erstellen:</strong>
+    <pre><code>mkdir mein-projekt
+cd mein-projekt
+git init</code></pre>
+    </li>
+    <li><strong>Dateien hinzufügen und committen:</strong>
+    <pre><code>echo "Hello World" > datei.txt
+git add datei.txt
+git commit -m "Erstes Commit"</code></pre>
+    </li>
+    <li><strong>Änderungen pushen:</strong>
+    <pre><code>git remote add origin https://github.com/deinusername/mein-projekt.git
+git push -u origin master</code></pre>
+    </li>
+    <li><strong>Änderungen pullen:</strong>
+    <pre><code>git pull origin master</code></pre>
+    </li>
+</ol>
+
+<h3>2. Nutzung via Visual Studio Code</h3>
+<ol>
+    <li><strong>VS Code installieren:</strong> Lade Visual Studio Code von der offiziellen Website herunter und installiere es.</li>
+    <li><strong>GIT in VS Code aktivieren:</strong> Stelle sicher, dass GIT installiert ist und VS Code es erkennen kann.</li>
+    <li><strong>Ein neues Repository erstellen:</strong>
+        <ul>
+            <li>Öffne VS Code und erstelle einen neuen Ordner.</li>
+            <li>Klicke auf das Quellcodeverwaltungs-Icon (Symbol mit zwei Verzweigungen) und wähle "Neues Repository".</li>
+        </ul>
+    </li>
+    <li><strong>Dateien hinzufügen und committen:</strong>
+        <ul>
+            <li>Füge neue Dateien im Explorer-Bereich hinzu.</li>
+            <li>Klicke auf das "+"-Symbol neben der Datei im Quellcodeverwaltungsbereich, um sie hinzuzufügen.</li>
+            <li>Gib eine Commit-Nachricht in das Eingabefeld ein und klicke auf den Haken.</li>
+        </ul>
+    </li>
+    <li><strong>Änderungen pushen:</strong>
+    <pre><code>git push</code></pre>
+    </li>
+    <li><strong>Änderungen pullen:</strong>
+    <pre><code>git pull</code></pre>
+    </li>
+</ol>
+
+<h2>Übungsaufgaben zu GIT</h2>
+
+<h3>Aufgabe 1: Repository erstellen</h3>
+<p>Erstelle ein neues Repository und füge eine README.md-Datei mit einer kurzen Beschreibung hinzu.</p>
+<pre><code>mkdir mein-repo
+cd mein-repo
+git init
+echo "# Mein Repo" > README.md
+git add README.md
+git commit -m "README hinzugefügt"</code></pre>
+
+<h3>Aufgabe 2: Commit und Push</h3>
+<p>Füge eine Datei <code>index.html</code> hinzu und committe diese. Push die Änderungen zu einem Remote-Repository.</p>
+<pre><code>echo "&lt;h1&gt;Hallo Welt&lt;/h1&gt;" > index.html
+git add index.html
+git commit -m "index.html hinzugefügt"
+git push -u origin master</code></pre>
+
+<h3>Aufgabe 3: Änderungen pullen</h3>
+<p>Simuliere, dass Änderungen im Remote-Repository vorgenommen wurden. Führe <code>git pull</code> aus, um diese Änderungen zu holen.</p>
+<pre><code>git pull origin master</code></pre>
+
+</body>
+</html>
