@@ -56,13 +56,19 @@
         </ul>
     </li>
     <li><strong>GIT konfigurieren:</strong>
-    <pre><code>git config --global user.name "Dein Name"
-git config --global user.email "deine.email@example.com"</code></pre>
+    <pre><code>git config --global user.email "deine.email@example.com"
+ git config --global user.name "Dein Name"</code></pre>
     </li>
-    <li><strong>Ein neues Repository erstellen:</strong>
+    <li><strong>Ein neues Repository erstellen (Klonen):</strong>
+    <strong><p>Repository erstellen</p></strong>
     <pre><code>mkdir mein-projekt
 cd mein-projekt
 git init</code></pre>
+<strong><p>Repository klonen</p></strong>
+    <pre><code>mkdir mein-projekt
+cd mein-projekt
+git clone "Repository-url"
+</code></pre>
     </li>
     <li><strong>Dateien hinzufügen und committen:</strong>
     <pre><code>echo "Hello World" > datei.txt
@@ -70,11 +76,10 @@ git add datei.txt
 git commit -m "Erstes Commit"</code></pre>
     </li>
     <li><strong>Änderungen pushen:</strong>
-    <pre><code>git remote add origin https://github.com/deinusername/mein-projekt.git
-git push -u origin master</code></pre>
+    <pre><code>git push</code></pre>
     </li>
     <li><strong>Änderungen pullen:</strong>
-    <pre><code>git pull origin master</code></pre>
+    <pre><code>git pull </code></pre>
     </li>
 </ol>
 
@@ -105,25 +110,22 @@ git push -u origin master</code></pre>
 
 <h2>Übungsaufgaben zu GIT</h2>
 
-<h3>Aufgabe 1: Repository erstellen</h3>
-<p>Erstelle ein neues Repository und füge eine README.md-Datei mit einer kurzen Beschreibung hinzu.</p>
+<h3>Aufgabe 1: Repository klonen</h3>
+<p>Klonen Sie eine externe Repository auf ihr Gerät.</p>
 <pre><code>mkdir mein-repo
 cd mein-repo
-git init
-echo "# Mein Repo" > README.md
-git add README.md
-git commit -m "README hinzugefügt"</code></pre>
+git clone https://github.com/NiklasSpelters/Webtechnologie.git</code></pre>
 
 <h3>Aufgabe 2: Commit und Push</h3>
 <p>Füge eine Datei <code>index.html</code> hinzu und committe diese. Push die Änderungen zu einem Remote-Repository.</p>
 <pre><code>echo "&lt;h1&gt;Hallo Welt&lt;/h1&gt;" > index.html
 git add index.html
 git commit -m "index.html hinzugefügt"
-git push -u origin master</code></pre>
+git push </code></pre>
 
 <h3>Aufgabe 3: Änderungen pullen</h3>
 <p>Simuliere, dass Änderungen im Remote-Repository vorgenommen wurden. Führe <code>git pull</code> aus, um diese Änderungen zu holen.</p>
-<pre><code>git pull origin master</code></pre>
+<pre><code>git pull</code></pre>
 
 </body>
 </html>
