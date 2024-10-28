@@ -3,10 +3,17 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=1.0, initial-scale=1.0">
-    <title>Document</title>
+    <title>Meine ersten Webseite</title>
+
+    <!-- CSS-Datei einbinden -->
+    <link type="text/css" rel="stylesheet" 
+        href="style_breil.css"/>
+
 </head>
 <body>
-    Test
+    <h1>Meine erste Webseite</h1>
+    <h3>Test</h3>
+    
 
     Test 123
 <ul>
@@ -17,14 +24,43 @@
 
 <!-- Es folgen Beispiel zu Links -->
 
+<h3>Ein Link</h3>
 <a href="https://www.hs-niederrhein.de" target="_blank">Link zur HSNR </a>
 
 <!-- Bild als Link -->
 
-<a href="https://w3school.com">
+<!--a href="https://w3school.com">
     <img src="man.jpg"/>
-</a>
+</!--a-->
 
+<h3>Eine Tabelle</h3>
+<table>
+    <tr>
+        <th>Name</th><th>E-Mail</th><th>Geburtsdatum</th>    
+    </tr>
+    <tr>
+        <td>Thomas Müller</td><td>thomas@mueller.de</td><td>12.01.1990</td>    
+    </tr>
+    <tr>
+        <td>Manuel Neuer</td><td>manuel@neuer.de</td><td>12.04.1993</td>    
+    </tr>
+</table>
+
+
+<h3> Ein Formular </h3>
+<form action="breil_seite2.html">
+
+    <label for="nachname">Name</label>
+    <input type="text" name="nachname" id="nachname">
+
+    <label for="email">E-Mail</label>
+    <input type="email" name="email" id="email">
+
+    <label for="geburtstag">Geburtstdatum</label>
+    <input type="datetime" name="geburtstag" id="geburtstag">
+
+    <input type="submit" value="Drück mich">
+</form>
 
 </body>
 </html>
