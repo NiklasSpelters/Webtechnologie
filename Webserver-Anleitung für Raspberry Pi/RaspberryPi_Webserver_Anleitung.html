@@ -1,0 +1,132 @@
+
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Webserver-Anleitung für Raspberry Pi</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            background-color: #f9f9f9;
+            color: #333;
+            margin: 0;
+            padding: 20px;
+        }
+        h1, h2, h3 {
+            color: #0056b3;
+        }
+        code {
+            background-color: #eee;
+            padding: 2px 4px;
+            border-radius: 4px;
+            font-size: 1.1em;
+        }
+        pre {
+            background-color: #eee;
+            padding: 10px;
+            border-radius: 4px;
+            overflow-x: auto;
+        }
+        .section {
+            margin-bottom: 20px;
+            padding: 15px;
+            background-color: #fff;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Webserver-Anleitung für Raspberry Pi</h1>
+    <p>Diese Anleitung erklärt, wie du eine Webseite auf deinem Raspberry Pi verfügbar machst und einen Ordner mit .htaccess schützt.</p>
+
+    <div class="section">
+        <h2>1. Vorbereitung</h2>
+        <p>Stelle sicher, dass dein Raspberry Pi mit deinem Heimnetzwerk verbunden ist und Apache installiert ist:</p>
+        <pre><code>sudo apt update
+sudo apt install apache2</code></pre>
+    </div>
+
+    <div class="section">
+        <h2>2. IP-Adresse des Raspberry Pi herausfinden</h2>
+        <p>Führe auf dem Raspberry Pi folgenden Befehl aus, um die IP-Adresse im Netzwerk zu ermitteln:</p>
+        <pre><code>ifconfig</code></pre>
+        <p>Suche die Adresse unter <code>wlan0</code> (für WLAN) oder <code>eth0</code> (für LAN). Beispiel: <code>192.168.1.100</code>.</p>
+        <img src="ip adresse.png" alt="">
+    </div>
+
+    <div class="section">
+        <h2>3. Dateien in den Webserver-Ordner legen</h2>
+        <p>Der Standard-Webserver-Ordner ist <code>/var/www/html</code>. Kopiere deine HTML-Dateien dorthin:</p>
+        <pre><code>sudo cp /pfad/zu/deiner_datei.html /var/www/html/index.html</code></pre>
+        <p>Die Datei <code>index.html</code> wird automatisch geladen, wenn du den Webserver aufrufst.</p>
+    </div>
+
+    <div class="section">
+        <h2>4. Apache starten</h2>
+        <p>Starte den Apache-Webserver, falls er nicht läuft:</p>
+        <pre><code>sudo systemctl start apache2</code></pre>
+        <p>Optional: Apache beim Booten starten:</p>
+        <pre><code>sudo systemctl enable apache2</code></pre>
+    </div>
+
+    <div class="section">
+        <h2>5. Zugriff von anderen Geräten</h2>
+        <p>Öffne einen Browser auf einem anderen Gerät im selben Netzwerk und gib die IP-Adresse des Raspberry Pi ein:</p>
+        <pre><code>http://192.168.1.100</code></pre>
+        <p>(Ersetze <code>192.168.1.100</code> mit der IP-Adresse deines Raspberry Pi.)</p>
+        <p>Es sollte die html Datei des Apache-Servers zu sehen sein</p>
+        <img src="Screenshot (41).png" alt="">
+    </div>
+
+    <div class="section">
+        <h2>6. Passwortschutz mit .htaccess</h2>
+        
+        <h3>6.1 Apache für .htaccess-Dateien konfigurieren</h3>
+        <p>Öffne die Apache-Konfiguration:</p>
+        <code>sudo nano /etc/apache2/apache2.conf</code>
+        <p>Suche den Abschnitt <code><Directory /var/www/></code> und stelle sicher, dass AllowOverride All gesetzt ist:</p>
+        <img src="director.png" alt="">
+        <p>Starte Apache neu:</p>
+        <code>sudo systemctl restart apache2</code>
+        
+        
+        <h3>6.2 .htaccess-Datei erstellen</h3>
+        <p>Erstelle eine <code>.htaccess</code>-Datei im Ordner, den du schützen möchtest (z. B. <code>geheimer_ordner</code>):</p>
+        <pre><code>sudo nano /var/www/html/geheimer_ordner/.htaccess</code></pre>
+        <p>Füge folgenden Inhalt ein:</p>
+        <pre><code>AuthType Basic
+AuthName "Geschützter Bereich"
+AuthUserFile /var/www/html/geheimer_ordner/.htpasswd
+Require valid-user</code></pre>
+            <img src="datei.png" alt="">
+
+
+        <h3>6.3 .htpasswd-Datei erstellen</h3>
+        <p>Erstelle die Datei <code>.htpasswd</code> mit Benutzername und Passwort:</p>
+        <pre><code>sudo htpasswd -c /var/www/html/geheimer_ordner/.htpasswd admin</code></pre>
+        <p>Ersetze <code>admin</code> mit dem gewünschten Benutzernamen.</p>
+        <p>Anschließend erfolgt die Passwort vergabe:</p>
+        <img src="htaccess.png" alt="">
+
+        <h3>6.4 Apache neu starten</h3>
+        <p>Starte den Apache-Server neu, damit die Änderungen wirksam werden:</p>
+        <pre><code>sudo systemctl restart apache2</code></pre>
+    </div>
+
+    <div class="section">
+        <h2>7. Testen</h2>
+        <p>Öffne den Browser und rufe den geschützten Ordner auf, z. B.:</p>
+        <pre><code>http://192.168.1.100/geheimer_ordner</code></pre>
+        <p>Gib den Benutzernamen und das Passwort ein, um Zugriff zu erhalten.</p>
+        <p>Auf einem Desktop-PC würde das so aussehen:</p>
+        <img src="Screenshot (42).png" alt="">
+        <p>Wenn alles geklappt hat sieht das so aus:</p>
+        <img src="Screenshot (43).png" alt="">
+    </div>
+
+    <p>Herzlichen Glückwunsch! Dein Raspberry Pi-Webserver ist jetzt einsatzbereit.</p>
+</body>
+</html>
