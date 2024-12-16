@@ -1,3 +1,26 @@
+
+
+// Neue Syntax
+$(function() {
+ 
+    $("#myTestID").on( "click", function() {
+        alert( "Handler for `click` called." );
+      } );
+ 
+});
+
+// Alte Syntax: Deprecated, aber noch funktionsfähig
+$( document ).ready(function() {
+ 
+    $( "a" ).click(function( event ) {
+ 
+        alert( "Thanks for visiting!" );
+ 
+    });
+ 
+});
+
+
 window.onload = function zeigeWillkommen() {
     console.log("Willkommen auf der Seite der Apotheke zur Gesundheit!");
 };
@@ -5,6 +28,9 @@ window.onload = function zeigeWillkommen() {
 function zeigeDetails() {
     alert("Wir bieten auch Beratungen zu Medikamenten und alternativen Behandlungsmethoden an.");
 }
+
+
+
 
 function überprüfeFormular() {
     const name = document.getElementById("name").value.trim();
